@@ -1,4 +1,4 @@
-# ATH9K HMAC Hybrid TDMA/CSMA MAC 
+# ATH9K HMAC Hybrid TDMA/CSMA MAC
 ```
 +-----------+------------------------------------+
 |           |                                    | Python HMAC Wrapper enables
@@ -39,10 +39,10 @@
 For more details please refer to our Paper:
 <https://arxiv.org/abs/1611.05376>
 
-## HOW TO INSTALL ATH9K HMAC on Ubuntu Linux in 3 steps: 
+## HOW TO INSTALL ATH9K HMAC on Ubuntu Linux in 3 steps:
 ### Download HMAC sources:
 ```
-cd ~; mkdir hmac; cd hmac; git clone https://github.com/szehl/ath9k-hmac.git; 
+cd ~; mkdir hmac; cd hmac; git clone https://github.com/szehl/ath9k-hmac.git;
 ```
 ### Install 3.12 kernel:
 ```
@@ -68,6 +68,10 @@ Everything went well.
 
 ## HOW TO USE ATH9k HMAC
 First you have to compile the hmac_userspace_daemon.
+Before, you need install some packages on Ubuntu 14.04:
+```
+apt-get install libevent-dev libnl-3-dev libnl-genl-3-dev libzmq3-dev
+```
 If you installed the ATH9k HMAC driver with the 3 step manual, you can simply use:
 ```
 cd ~/hmac/ath9k-hmac/hmac_userspace_daemon; make;
@@ -77,7 +81,7 @@ Otherwise make sure that the file hmac_userspace_daemon/hybrid_tdma_csma_mac.c i
 
 You can now use the HMAC Python Wrapper to start the ATH9k HMAC.
 
-To start a first example of the ATH9K HMAC MAC, please make sure, that the ATH9K WiFi interface you want to use is up (e.g. 
+To start a first example of the ATH9K HMAC MAC, please make sure, that the ATH9K WiFi interface you want to use is up (e.g.
 sudo ifconfig wlan0 up), rfkill does not block WiFi (e.g. sudo rfkill unblock all). Then open the file hmac_python_wrapper/hmac_example.py and configure your interface and targte Link address e.g.:
 
 ```
@@ -96,16 +100,16 @@ The Usual Output of the Wrapper should be like this:
 root@earth:~/hmac/ath9k-hmac$ python hmac_python_wrapper/hmac_example.py
 INFO - HMAC is running ...
 INFO - [
-INFO - 0: 
+INFO - 0:
 INFO - 1: 34:13:e8:24:77:be/1,
 INFO - 2: 34:13:e8:24:77:be/1,
 INFO - 3: 34:13:e8:24:77:be/1,
 INFO - 4: 34:13:e8:24:77:be/1,
-INFO - 5: 
-INFO - 6: 
-INFO - 7: 
-INFO - 8: 
-INFO - 9: 
+INFO - 5:
+INFO - 6:
+INFO - 7:
+INFO - 8:
+INFO - 9:
 INFO - ]
 
 Debug = 0
@@ -121,16 +125,16 @@ Received new configuration update: 5,34:13:e8:24:77:be,1#6,34:13:e8:24:77:be,1#7
 INFO - Received ctrl reply message from HMAC: OK
 INFO - HMAC is updated ...
 INFO - [
-INFO - 0: 
-INFO - 1: 
-INFO - 2: 
-INFO - 3: 
-INFO - 4: 
+INFO - 0:
+INFO - 1:
+INFO - 2:
+INFO - 3:
+INFO - 4:
 INFO - 5: 34:13:e8:24:77:be/1,
 INFO - 6: 34:13:e8:24:77:be/1,
 INFO - 7: 34:13:e8:24:77:be/1,
 INFO - 8: 34:13:e8:24:77:be/1,
-INFO - 9: 
+INFO - 9:
 INFO - ]
 Average slot duration: 19992.50
 INFO - Stopping HMAC
@@ -147,7 +151,7 @@ In the example, first the ATH9K HMAC is started with a initial configuration wit
 
 In the second step of the example, the update functionality is called and the schedule is changed, now the slots 5-8 are used by Best Effort traffic which is destined to STA 34:13:e8:24:77:be, while the slots 0-4 and 9 are paused for everyone.
 
-Finally in the last step of the example, the terminate functionality is called which first enables all TIDs of all STAs and second terminates the user-space daemon and therefore deactivates the ATH9k HMAC. 
+Finally in the last step of the example, the terminate functionality is called which first enables all TIDs of all STAs and second terminates the user-space daemon and therefore deactivates the ATH9k HMAC.
 
 
 #ATH9k Advanced Configuration
@@ -199,7 +203,7 @@ If no error is shown and the daemon just prints out the current slot size, we ar
 
 The HMAC user-space deaemon is using the following configuration parameters:
 ```
-sudo ./hmac_userspace_daemon 
+sudo ./hmac_userspace_daemon
 -i wlan0                     # ATH9k WiFi Interface on which HMAC schedule should be applied
 -f 20000                     # Size of each slot in micro seconds
 -n 10                        # Number of Slots
@@ -216,7 +220,7 @@ Note that if the schedule configuration contains no entry for a specific slot, g
 * Anatolij Zubow, TU-Berlin, zubow@tkn
 * Adam Wolisz, TU-Berlin, wolisz@tkn
 * tkn = tkn.tu-berlin.de
-* 
+*
 
 ## 10. How to reference hMAC
 Please use the following bibtex :
